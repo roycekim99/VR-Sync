@@ -13,15 +13,15 @@ using UnityEngine;
 **/
 public class VideoPlayerManager : MonoBehaviour
 {
-    [SerializeField] private Object streamingAsset;
     [SerializeField] private string filePath;
-
-    [SerializeField] private VideoPlayer vidPlayer;
+    [SerializeField] private Object streamingAsset;
+    [SerializeField] private UnityEngine.Video.VideoPlayer vidPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(filePath);
+        string videoDirectoryPath = Application.dataPath + "/_Videos";
+        Debug.Log(videoDirectoryPath);
     }
 
     // Update is called once per frame
@@ -29,4 +29,31 @@ public class VideoPlayerManager : MonoBehaviour
     {
 
     }
+
+    public void setTime(string time)
+    {
+
+    }
+
+    // change source video url
+    // 1. Update Render Texture when source change
+    // --> need to make sure source and texture have same resolution
+    // 2. 
+    void loadVideo(string videoURL)
+    {
+
+        Debug.Log(videoURL);
+    }
+    public void startVideo()
+    {
+        vidPlayer.Play();
+    }
+
+    public void stopVideo()
+    {
+        vidPlayer.Stop();
+    }
+
+
+
 }
