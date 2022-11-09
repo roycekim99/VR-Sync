@@ -214,11 +214,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 578001688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ae39aa3975e274fb3ce470bcf2e4e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2646490fac093b340b0bf5dadbca0db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IP: localhost
-  PORT: 3000
+  URI: 192.168.0.143:3000
+  handleSocketReceiving: 1
 --- !u!1 &693289817
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,6 @@ GameObject:
   m_Component:
   - component: {fileID: 693289819}
   - component: {fileID: 693289818}
-  - component: {fileID: 693289821}
   m_Layer: 0
   m_Name: VideoPlayer
   m_TagString: Untagged
@@ -255,7 +254,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
@@ -267,8 +266,8 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
-  m_Looping: 0
+  m_SkipOnDrop: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -289,20 +288,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &693289821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693289817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9cb647c6589b7f45bb999442d92698b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidPlayerObj: {fileID: 693289818}
-  streamingAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +497,7 @@ GameObject:
   - component: {fileID: 1354046588}
   m_Layer: 0
   m_Name: Video Manager
-  m_TagString: Untagged
+  m_TagString: Video Player Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filePath: Assets/_Videos
   streamingAsset: {fileID: 32900000, guid: 45e4fec8cb1dbae4eb233ce5e78ed04e, type: 3}
-  vidPlayer: {fileID: 693289821}
+  vidPlayer: {fileID: 693289818}
 --- !u!4 &1354046589
 Transform:
   m_ObjectHideFlags: 0

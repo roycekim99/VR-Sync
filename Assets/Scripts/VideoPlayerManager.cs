@@ -17,19 +17,24 @@ public class VideoPlayerManager : MonoBehaviour
     [SerializeField] private Object streamingAsset;
     [SerializeField] private UnityEngine.Video.VideoPlayer vidPlayer;
 
+    private void Awake()
+    {
+        Caching.compressionEnabled = false;
+        vidPlayer.Prepare();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         string videoDirectoryPath = Application.dataPath + "/_Videos";
         Debug.Log(videoDirectoryPath);
+
+        vidPlayer.playOnAwake = false;
+        vidPlayer.frame = 0;
+        vidPlayer.Pause();
+
+        Debug.Log("Video paused at VPM.Start()");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void setTime(string time)
     {
 
@@ -42,15 +47,28 @@ public class VideoPlayerManager : MonoBehaviour
     void loadVideo(string videoURL)
     {
 
-        Debug.Log(videoURL);
+        Debug.Log("will load: " + videoURL);
+        vidPlayer.url = videoURL;
+        vidPlayer.Prepare();
     }
     public void startVideo()
     {
-        vidPlayer.Play();
+        Debug.Log("CALLED PLAY");
+
+        if (vidPlayer.isPrepared)
+        {
+            vidPlayer.Play();
+        }
+        else
+        {
+            Debug.Log("Video not ready yet...");
+            vidPlayer.Prepare();
+        }
     }
 
     public void stopVideo()
     {
+        Debug.Log("CALLED STOP");
         vidPlayer.Stop();
     }
 
